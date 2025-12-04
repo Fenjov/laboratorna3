@@ -1,10 +1,31 @@
 ﻿using System;
 using System.Text;
+namespace electronics_store {
+    struct Product
+    {
+        public string Name { get; set; } = "";
+        public int Price { get; set; } = 0;
+        public int quantity;
+        public string category { get; set; }
+        public Product(string name, int price, int quantity, string category)
+        {
+            this.Name = name;
+            this.Price = price;
+            this.quantity = quantity;
+            this.category = category;
+        }
+        public void ShowInfo()
+        {
+            Console.WriteLine($"Назва: {Name}, Ціна: {Price}, Кількість: {quantity}, Категорія: {category}");
+        }
+        public bool IsEmpty()
+        {
+            return String.IsNullOrWhiteSpace(Name);
+        }
+    }
 
-namespace electronics_store
-{
 
-    internal class Program
+        internal class Program
     {
         private static Product p1 = new Product();
         private static Product p2 = new Product();
@@ -12,6 +33,7 @@ namespace electronics_store
         private static Product p4 = new Product();
         private static Product p5 = new Product();
 
+        
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -90,23 +112,24 @@ namespace electronics_store
                 else if (p3.IsEmpty())
                 {
                     p3 = new Product(name, (int)price, 1, "Машина");
+                }
 
 
                 else if (p4.IsEmpty())
-                    {
-                        p4 = new Product(name, (int)price, 1, "Машина");
+                {
+                    p4 = new Product(name, (int)price, 1, "Машина");
 
-                    }
-                    else if (p5.IsEmpty())
-                    {
-                        p5 = new Product(name, (int)price, 1, "Машина");
+                }
+                else if (p5.IsEmpty())
+                {
+                    p5 = new Product(name, (int)price, 1, "Машина");
 
-                    }
-                    else
-                    {
-                        Console.WriteLine("Немає місця для продуктів");
-                        break;
-                    }
+                }
+                else
+                {
+                    Console.WriteLine("Немає місця для продуктів");
+                    break;
+                }
 
                     Console.WriteLine("================================");
                     Console.WriteLine("Чи хочете додати ще один продукт 1 - Yes, 0 - No");
@@ -191,6 +214,7 @@ namespace electronics_store
             }
             static void ShowProducts()
             {
+            
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"Загальна кількість продуктів: {GetProductsCount()}");
                 Console.WriteLine("========= Наші товари =========");
@@ -231,7 +255,7 @@ namespace electronics_store
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine($"Загальна кількість продуктів: {products.Count}");
+                     
                         ShowProducts();
                         break;
                     case 2:
@@ -467,4 +491,3 @@ namespace electronics_store
             }
         }
     }
-}
